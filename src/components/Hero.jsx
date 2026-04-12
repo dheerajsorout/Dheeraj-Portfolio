@@ -1,4 +1,5 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
+import heroProfile from '../../hero-profile.png';
 
 const Hero = () => {
     const { scrollYProgress } = useScroll();
@@ -55,7 +56,7 @@ const Hero = () => {
                 animate={{ opacity: 1, scale: 1, rotate: 0 }}
                 transition={{ duration: 1, delay: 0.2, ...springTransition }}
             >
-                <img src="./hero-profile.png" alt="Dheeraj" className="hero-image" />
+                <img src={heroProfile} alt="Dheeraj" className="hero-image" />
             </motion.div>
         </section>
     );
