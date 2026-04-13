@@ -28,11 +28,6 @@ const Footer = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ delay: index * 0.1 }}
                         viewport={{ once: true }}
-                        whileHover={{ 
-                            scale: 1.2, 
-                            rotate: 10,
-                            color: 'var(--accent)' 
-                        }}
                     >
                         <i className={link.icon}></i>
                     </motion.a>

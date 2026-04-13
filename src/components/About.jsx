@@ -37,7 +37,7 @@ const About = () => {
                 viewport={{ once: true }}
                 transition={{ delay: 0.2 }}
             >
-                Hello! It&apos;s <strong>Rahul Beniwal</strong>, a <strong>MERN Stack Developer</strong> and <strong>UI/UX Designer</strong> with 1.3+ years of experience building responsive and user-friendly web applications. I can handle both Frontend and Backend perfectly. My core JavaScript and React skills are strong. I specialize in turning complex problems into simple, elegant solutions.
+                Hello! It&apos;s <strong>Dheeraj</strong>, a <strong>MERN Stack Developer</strong>  with 1.3+ years of experience building responsive and user-friendly web applications. I can handle both Frontend and Backend perfectly. My core JavaScript and React skills are strong. I specialize in turning complex problems into simple, elegant solutions.
             </motion.p>
             
             <div className="about-grid">
