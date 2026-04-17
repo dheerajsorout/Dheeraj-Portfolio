@@ -3,38 +3,52 @@ import heroProfile from '../../hero-profile.png';
 
 const Hero = () => {
     const { scrollYProgress } = useScroll();
-    const yParallax = useTransform(scrollYProgress, [0, 0.5], [0, 200]);
+    const yParallax = useTransform(scrollYProgress, [0, 0.5], [0, 150]);
 
-    const springTransition = { type: 'spring', stiffness: 100, damping: 15 };
+    const springTransition = { type: 'spring', stiffness: 100, damping: 20 };
+
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.15,
+                delayChildren: 0.2
+            }
+        }
+    };
+
+    const itemVariants = {
+        hidden: { opacity: 0, y: 30 },
+        visible: { opacity: 1, y: 0, transition: springTransition }
+    };
 
     return (
         <section id="home" className="hero section">
             <motion.div 
                 className="hero-content"
-                initial={{ opacity: 0, x: -100 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, ...springTransition }}
+                variants={containerVariants}
+                initial="hidden"
+                animate="visible"
             >
-                <h1 className="hero-title">
-                    Hi, I'm <span className="accent">DHEERAJ</span>
-                </h1>
+                <motion.h1 className="hero-title" variants={itemVariants}>
+                    Hi, I'm <span className="accent text-gradient">DHEERAJ</span>
+                </motion.h1>
                 <motion.h2 
                     className="hero-subtitle accent"
-                    initial={{ width: 0 }}
-                    animate={{ width: "fit-content" }}
-                    transition={{ duration: 1.5, delay: 0.5, ease: "easeInOut" }}
-                    style={{ whiteSpace: "nowrap", overflow: "hidden", borderRight: "3px solid var(--accent)" }}
+                    variants={itemVariants}
+                    style={{ display: "inline-block" }}
                 >
                     MERN Stack Developer
                 </motion.h2>
-                <p className="hero-description">
+                <motion.p className="hero-description" variants={itemVariants}>
                     MERN Stack Developer with strong expertise in building scalable, responsive, and user-centric web applications. Skilled in full-stack development using React.js, Next.js, Node.js, and MongoDB, with hands-on experience in AI-integrated applications and real-world deployment.
-                </p>
-                <div className="hero-buttons">
+                </motion.p>
+                <motion.div className="hero-buttons" variants={itemVariants}>
                     <motion.a 
                         href="#projects" 
                         className="btn btn-primary"
-                        whileHover={{ scale: 1.05 }}
+                        whileHover={{ scale: 1.05, boxShadow: "0 10px 25px rgba(16, 185, 129, 0.4)" }}
                         whileTap={{ scale: 0.95 }}
                     >
                         View Projects
@@ -42,12 +56,12 @@ const Hero = () => {
                     <motion.a 
                         href="#contact" 
                         className="btn btn-outline"
-                        whileHover={{ scale: 1.05 }}
+                        whileHover={{ scale: 1.05, boxShadow: "0 10px 25px rgba(16, 185, 129, 0.1)" }}
                         whileTap={{ scale: 0.95 }}
                     >
                         Contact Me
                     </motion.a>
-                </div>
+                </motion.div>
             </motion.div>
             <motion.div 
                 className="hero-image-container"
@@ -56,7 +70,14 @@ const Hero = () => {
                 animate={{ opacity: 1, scale: 1, rotate: 0 }}
                 transition={{ duration: 1, delay: 0.2, ...springTransition }}
             >
-                <img src={heroProfile} alt="Dheeraj" className="hero-image" />
+                <motion.img 
+                    src={heroProfile} 
+                    alt="Dheeraj" 
+                    className="hero-image"
+                    animate={{ y: [0, -15, 0] }}
+                    transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
+                    whileHover={{ scale: 1.05, rotate: 2 }}
+                />
             </motion.div>
         </section>
     );

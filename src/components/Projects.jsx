@@ -109,10 +109,11 @@ const Projects = () => {
     return (
         <section id="projects" className="projects section">
             <motion.h2 
-                className="section-title" 
-                initial={{ opacity: 0, y: 20 }}
+                className="section-title text-gradient" 
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                viewport={{ once: true, amount: 0.3 }}
             >
                 Projects
             </motion.h2>
@@ -121,7 +122,7 @@ const Projects = () => {
                 variants={containerVariants}
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true, margin: "-100px" }}
+                viewport={{ once: true, margin: "-50px" }}
             >
                 {projects.map((project, index) => (
                     <motion.div 
@@ -130,8 +131,10 @@ const Projects = () => {
                         style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}
                         variants={itemVariants}
                         whileHover={{ 
-                            scale: 1.05, 
-                            boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1)"
+                            y: -10,
+                            scale: 1.02, 
+                            boxShadow: "0 30px 40px -10px rgba(0, 0, 0, 0.3), 0 15px 20px -10px rgba(16, 185, 129, 0.2)",
+                            borderColor: "rgba(16, 185, 129, 0.4)"
                         }}
                     >
                         <div>
@@ -146,10 +149,10 @@ const Projects = () => {
                                     href={project.link}
                                     target="_blank" 
                                     rel="noreferrer"
-                                    style={{ color: 'var(--accent)', textDecoration: 'none', fontSize: '0.9em', fontWeight: 500 }}
+                                    style={{ color: 'var(--accent)', textDecoration: 'none', fontSize: '0.9em', fontWeight: 500, display: 'inline-flex', alignItems: 'center', gap: '8px' }}
                                     whileHover={{ x: 5 }}
                                 >
-                                    Live Demo &nbsp;<i className="fas fa-external-link-alt"></i>
+                                    Live Demo <i className="fas fa-external-link-alt"></i>
                                 </motion.a>
                             </div>
                         )}

@@ -14,6 +14,7 @@ import ThemeTransitionLayer from './components/ThemeTransitionLayer';
 function App() {
     const { scrollYProgress } = useScroll();
     const { isTransitioning } = useTheme();
+    const resumeUrl = `${import.meta.env.BASE_URL}Dheeraj_Resume.pdf`;
 
     const scaleX = useSpring(scrollYProgress, {
         stiffness: 100,
@@ -59,7 +60,7 @@ function App() {
                             </motion.h2>
                             <div className="resume-btn-container">
                                 <motion.a
-                                    href="./Dheeraj_Resume.pdf"
+                                    href={resumeUrl}
                                     className="btn btn-primary"
                                     download="Dheeraj_Resume.pdf"
                                     whileHover={{ scale: 1.05 }}

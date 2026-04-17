@@ -131,8 +131,8 @@ const Contact = () => {
                                 className={`contact-method-card contact-tone-${item.tone}`}
                                 variants={methodVariants}
                                 {...linkProps}
-                                whileHover={{ y: -6, scale: 1.01 }}
-                                transition={{ duration: 0.22 }}
+                                whileHover={{ y: -8, scale: 1.03, boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(16, 185, 129, 0.4)" }}
+                                transition={{ duration: 0.3, type: "spring", stiffness: 300, damping: 20 }}
                             >
                                 <span className="contact-method-icon" aria-hidden="true">
                                     <i className={item.icon}></i>
