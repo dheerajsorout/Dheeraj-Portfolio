@@ -119,7 +119,7 @@ const Contact = () => {
                         variants={revealUp(16, 0.07)}
                     >
                         <span className="contact-availability-dot" aria-hidden="true" />
-                        <span className="contact-availability-copy">Dheeraj • MERN Stack Developer • Available for work</span>
+                        <span className="contact-availability-copy">Dheeraj | MERN Stack Developer | Available for work</span>
                     </motion.div>
 
                     <motion.div
@@ -217,3 +217,4 @@ const Contact = () => {
 };
 
 export default Contact;
+
