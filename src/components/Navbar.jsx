@@ -3,13 +3,13 @@ import { motion, AnimatePresence } from 'framer-motion';
 import ThemeToggle from './ThemeToggle';
 
 const navLinks = [
-    { name: 'Home', href: '#home' },
-    { name: 'About', href: '#about' },
-    { name: 'Experience', href: '#experience' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Skills', href: '#skills' },
-    { name: 'Resume', href: '#resume' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Home', href: '#home', icon: 'fas fa-house-chimney' },
+    { name: 'About', href: '#about', icon: 'fas fa-user' },
+    { name: 'Experience', href: '#experience', icon: 'fas fa-briefcase' },
+    { name: 'Projects', href: '#projects', icon: 'fas fa-code' },
+    { name: 'Skills', href: '#skills', icon: 'fas fa-layer-group' },
+    { name: 'Resume', href: '#resume', icon: 'fas fa-file-lines' },
+    { name: 'Contact', href: '#contact', icon: 'fas fa-paper-plane' },
 ];
 
 const Navbar = () => {
@@ -137,7 +137,13 @@ const Navbar = () => {
                                                 transition={{ type: 'spring', stiffness: 280, damping: 24 }}
                                             />
                                         ) : null}
+                                        <span className="nav-link-icon" aria-hidden="true">
+                                            <i className={link.icon}></i>
+                                        </span>
                                         <span className="nav-link-label">{link.name}</span>
+                                        <span className="nav-link-arrow" aria-hidden="true">
+                                            <i className="fas fa-chevron-right"></i>
+                                        </span>
                                     </motion.a>
                                 </motion.li>
                             ))}

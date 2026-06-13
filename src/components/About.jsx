@@ -58,7 +58,7 @@ const About = () => {
                 className="about-ref-intro"
                 variants={revealUp(20, 0.05)}
             >
-                Hello! It&apos;s <strong>Dheeraj</strong>, a <strong>MERN Stack Developer</strong> with 3+ Months of experience building responsive and user-friendly web applications. I can handle both Frontend and Backend perfectly. My core JavaScript, React, and Next.js skills are strong. I specialize in turning complex problems into simple, elegant solutions.
+                Hello! It&apos;s <strong>Dheeraj</strong>, a <strong>MERN Stack Developer</strong> with 1+ Years of Experience building responsive and user-friendly web applications. I can handle both Frontend and Backend perfectly. My core JavaScript, React, and Next.js skills are strong. I specialize in turning complex problems into simple, elegant solutions.
             </motion.p>
 
             <motion.div

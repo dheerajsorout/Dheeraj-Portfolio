@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 
 const Footer = () => {
     const socialLinks = [
-        { icon: 'fab fa-instagram', href: '#' },
+        { icon: 'fab fa-instagram', href: 'https://www.instagram.com/ch.dheeraj.sorout/' },
         { icon: 'fab fa-github', href: 'https://github.com/dheeraj' },
         { icon: 'fab fa-linkedin-in', href: '#' },
         { icon: 'fas fa-envelope', href: 'mailto:dheerajsorout16500@gmail.com' },

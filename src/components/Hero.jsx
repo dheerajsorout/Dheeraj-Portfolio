@@ -1,6 +1,66 @@
+import { useEffect, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import heroProfile from '../../hero-profile.png';
 import { hoverLift, revealScale, revealUp, sectionStagger, springSoft } from './animations/variants';
+
+const prefersReducedMotion = () =>
+    typeof window !== 'undefined' &&
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+const TypewriterText = ({
+    text,
+    className = '',
+    textClassName = '',
+    startDelay = 0,
+    speed = 70,
+}) => {
+    const [typedText, setTypedText] = useState(() => (prefersReducedMotion() ? text : ''));
+
+    useEffect(() => {
+        if (prefersReducedMotion()) {
+            setTypedText(text);
+            return undefined;
+        }
+
+        let currentIndex = 0;
+        let typingTimer;
+        const startTimer = window.setTimeout(() => {
+            setTypedText('');
+            typingTimer = window.setInterval(() => {
+                currentIndex += 1;
+                setTypedText(text.slice(0, currentIndex));
+
+                if (currentIndex >= text.length) {
+                    window.clearInterval(typingTimer);
+                }
+            }, speed);
+        }, startDelay);
+
+        return () => {
+            window.clearTimeout(startTimer);
+            window.clearInterval(typingTimer);
+        };
+    }, [text, speed, startDelay]);
+
+    const typewriterClassName = [
+        'typewriter',
+        typedText.length === text.length ? 'is-complete' : '',
+        className,
+    ].filter(Boolean).join(' ');
+
+    return (
+        <span className={typewriterClassName}>
+            <span className="sr-only">{text}</span>
+            <span className={`typewriter-ghost ${textClassName}`} aria-hidden="true">
+                {text}
+            </span>
+            <span className="typewriter-visible" aria-hidden="true">
+                <span className={textClassName}>{typedText}</span>
+                <span className="typewriter-cursor" />
+            </span>
+        </span>
+    );
+};
 
 const Hero = () => {
     const { scrollYProgress } = useScroll();
@@ -23,14 +83,26 @@ const Hero = () => {
                 </motion.span>
 
                 <motion.h1 className="hero-title" variants={revealUp(36)}>
-                    Hi, I'm <span className="hero-name-gradient">DHEERAJ</span>
+                    Hi, I'm{' '}
+                    <TypewriterText
+                        text="DHEERAJ"
+                        className="hero-name-typewriter"
+                        textClassName="hero-name-gradient"
+                        startDelay={520}
+                        speed={95}
+                    />
                 </motion.h1>
 
                 <motion.h2
                     className="hero-subtitle accent"
                     variants={revealUp(28, 0.02)}
                 >
-                    MERN Stack Developer
+                    <TypewriterText
+                        text="MERN Stack Developer"
+                        className="hero-subtitle-typewriter"
+                        startDelay={1450}
+                        speed={58}
+                    />
                 </motion.h2>
 
                 <motion.p className="hero-description" variants={revealUp(30, 0.05)}>
