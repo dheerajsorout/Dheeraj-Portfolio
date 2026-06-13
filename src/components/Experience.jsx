@@ -3,18 +3,18 @@ import { hoverLift, revealUp, sectionStagger, viewport } from './animations/vari
 
 const experiences = [
     {
+        title: '1 Year Experience',
+        company: 'Go Hype Media, Delhi',
+        meta: '',
+        description:
+            'Gained practical knowledge in full-stack web development and collaborated on scaling web experiences. Actively contributed to professional projects while exploring industry standards and workflows.'
+    },
+    {
         title: 'Professional Training',
         company: 'DUCAT IT Training Institute, Noida',
         meta: '6 Months ',
         description:
             'Built strong practical knowledge in MERN stack development through hands-on training, real-world assignments, and focused work on frontend and backend fundamentals.'
-    },
-    {
-        title: 'Internship',
-        company: 'Go Hype Media, Delhi',
-        meta: '3 Months Experience',
-        description:
-            'Gained practical knowledge in full-stack web development and collaborated on scaling web experiences. Actively contributed to professional projects while exploring industry standards and workflows.'
     }
 ];
 
