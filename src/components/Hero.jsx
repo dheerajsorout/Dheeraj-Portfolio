@@ -66,6 +66,26 @@ const Hero = () => {
     const { scrollYProgress } = useScroll();
     const yParallax = useTransform(scrollYProgress, [0, 0.45], [0, 110]);
 
+    const imageReveal = {
+        hidden: {
+            opacity: 0,
+            y: 150,
+            scale: 0.9,
+            filter: 'blur(8px)',
+        },
+        visible: {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            filter: 'blur(0px)',
+            transition: {
+                duration: 1.25,
+                ease: [0.16, 1, 0.3, 1],
+                delay: 0.15,
+            }
+        }
+    };
+
     return (
         <motion.section
             id="home"
@@ -78,7 +98,16 @@ const Hero = () => {
                 className="hero-content"
                 variants={sectionStagger(0.12, 0.12)}
             >
-                <motion.span className="hero-kicker" variants={revealUp(18)}>
+                <motion.span
+                    className="hero-kicker"
+                    variants={revealUp(18)}
+                    whileHover={{
+                        scale: 1.05,
+                        y: -2,
+                    }}
+                    whileTap={{ scale: 0.98 }}
+                    transition={{ type: 'spring', stiffness: 400, damping: 15 }}
+                >
                     Full-stack web developer
                 </motion.span>
 
@@ -106,7 +135,14 @@ const Hero = () => {
                 </motion.h2>
 
                 <motion.p className="hero-description" variants={revealUp(30, 0.05)}>
-                    MERN Stack Developer with strong expertise in building scalable, responsive, and user-centric web applications. Skilled in full-stack development using React.js, Next.js, Node.js, and MongoDB, with hands-on experience in AI-integrated applications and real-world deployment.
+                    MERN Stack Developer with strong expertise in building scalable, responsive, and user-centric web applications. Skilled in full-stack development using{' '}
+                    <span className="tech-highlight tech-python">Python</span>,{' '}
+                    <span className="tech-highlight tech-js">JavaScript</span>,{' '}
+                    <span className="tech-highlight tech-react">React.js</span>,{' '}
+                    <span className="tech-highlight tech-next">Next.js</span>,{' '}
+                    <span className="tech-highlight tech-node">Node.js</span> and{' '}
+                    <span className="tech-highlight tech-mongo">MongoDB</span>,<span className="tech-highlight tech-neon">NeonDB</span>{' '}
+                    with hands-on experience in AI-integrated applications and real-world deployment.
                 </motion.p>
 
                 <motion.div className="hero-buttons" variants={revealUp(24, 0.08)}>
@@ -139,8 +175,6 @@ const Hero = () => {
 
             <motion.div
                 className="hero-image-container"
-                style={{ y: yParallax }}
-                variants={revealScale(0.08)}
             >
                 <motion.span
                     className="hero-orb hero-orb-one"
@@ -173,26 +207,13 @@ const Hero = () => {
 
                 <motion.div
                     className="hero-image-shell"
-                    whileHover={{
-                        y: -10,
-                        rotate: 1.5,
-                        scale: 1.02,
-                    }}
-                    transition={springSoft}
+                    variants={imageReveal}
                 >
-                    <motion.span
-                        className="hero-image-ring"
-                        aria-hidden="true"
-                        animate={{ rotate: 360 }}
-                        transition={{ duration: 18, ease: 'linear', repeat: Infinity }}
-                    />
-
-                    <motion.img
+                    <img
                         src={heroProfile}
                         alt="Dheeraj"
                         className="hero-image"
-                        animate={{ y: [0, -10, 0] }}
-                        transition={{ duration: 5.4, ease: 'easeInOut', repeat: Infinity }}
+                        loading="eager"
                     />
                 </motion.div>
             </motion.div>

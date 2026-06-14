@@ -7,7 +7,7 @@ const Projects = () => {
             title: 'BookMyInfluencer',
             slug: 'bookmyinfluencer',
             desc: 'Developed a platform for brands to collaborate with influencers. Implemented discovery, campaign tracking, and workflows.',
-            link: 'https://bookmyinfluencer.vercel.app/'
+            link: 'https://www.bookmyinfluncer.com/'
         },
         {
             title: 'Data-Pedia AI',
@@ -27,6 +27,12 @@ const Projects = () => {
             icon: 'fas fa-hotel',
             desc: 'Designed a modern hotel website with responsive UI and service showcase.',
             link: 'https://hider-two.vercel.app/'
+        },
+        {
+            title: 'Pubesto E-Commerce',
+            slug: 'pubesto-ecommerce',
+            desc: 'Built a responsive e-commerce platform with product catalog, category management, shopping cart, and secure checkout features.',
+            link: 'https://www.pubesto.com/'
         }
     ];
 
@@ -84,6 +90,19 @@ const Projects = () => {
                         <span className="project-brand-hotelhider-overline">HOTEL</span>
                         <span className="project-brand-hotelhider-title">HIDER</span>
                     </span>
+                </div>
+            );
+        }
+
+        if (project.slug === 'pubesto-ecommerce') {
+            return (
+                <div className="project-brand project-brand-pubesto" aria-label="Pubesto E-Commerce">
+                    <img
+                        className="project-brand-pubesto-logo"
+                        src="/pubesto-logo.svg"
+                        alt="Pubesto"
+                        loading="lazy"
+                    />
                 </div>
             );
         }
