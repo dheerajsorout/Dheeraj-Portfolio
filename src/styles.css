@@ -1337,6 +1337,47 @@ h3 {
     place-items: center;
     width: 420px;
     height: 420px;
+    padding: 16px;
+    border-radius: 34px;
+    background:
+        linear-gradient(145deg, rgba(255, 255, 255, 0.24), rgba(255, 255, 255, 0.08)),
+        linear-gradient(135deg, rgba(16, 185, 129, 0.12), rgba(14, 165, 233, 0.08));
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    box-shadow:
+        0 30px 70px rgba(2, 6, 23, 0.18),
+        0 16px 32px rgba(16, 185, 129, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(12px) saturate(150%);
+    -webkit-backdrop-filter: blur(12px) saturate(150%);
+    overflow: hidden;
+    isolation: isolate;
+}
+
+.hero-image-shell::before {
+    content: '';
+    position: absolute;
+    inset: 10px;
+    z-index: 0;
+    border-radius: 26px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background:
+        radial-gradient(circle at top left, rgba(255, 255, 255, 0.2), transparent 42%),
+        linear-gradient(135deg, rgba(255, 255, 255, 0.08), transparent 35%, rgba(16, 185, 129, 0.04));
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
+    pointer-events: none;
+}
+
+.hero-image-shell::after {
+    content: '';
+    position: absolute;
+    inset: auto 18px 14px 18px;
+    z-index: 0;
+    height: 74px;
+    border-radius: 22px;
+    background: linear-gradient(180deg, rgba(2, 6, 23, 0), rgba(2, 6, 23, 0.35));
+    filter: blur(6px);
+    opacity: 0.45;
+    pointer-events: none;
 }
 
 @keyframes pulse {
@@ -1354,19 +1395,80 @@ h3 {
 .hero-image {
     width: 100%;
     height: 100%;
-    border-radius: 28px;
+    border-radius: 24px;
     object-fit: cover;
     object-position: center 40%;
     /* Better framing for this specific portrait */
-    border: 3px solid var(--img-border);
-    box-shadow: var(--img-shadow);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow:
+        0 18px 40px rgba(2, 6, 23, 0.2),
+        0 0 0 1px rgba(255, 255, 255, 0.06) inset;
     z-index: 1;
     position: relative;
-    transition: all 0.5s ease;
+    transition: transform 0.5s ease, box-shadow 0.5s ease, filter 0.5s ease;
+    filter: saturate(1.06) contrast(1.04);
 }
 
 .hero-image:hover {
-    border-color: var(--accent);
+    transform: scale(1.015);
+    filter: saturate(1.1) contrast(1.06);
+    box-shadow:
+        0 24px 54px rgba(2, 6, 23, 0.22),
+        0 0 0 1px rgba(16, 185, 129, 0.22) inset;
+}
+
+.hero-image-badge {
+    position: absolute;
+    top: 18px;
+    left: 18px;
+    z-index: 3;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    background: rgba(255, 255, 255, 0.14);
+    color: var(--text-main);
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    box-shadow:
+        0 10px 24px rgba(2, 6, 23, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.22);
+    backdrop-filter: blur(14px) saturate(160%);
+    -webkit-backdrop-filter: blur(14px) saturate(160%);
+}
+
+.hero-image-badge i {
+    color: var(--accent);
+    font-size: 0.85rem;
+}
+
+.hero-image-ring {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+    border: 1px solid rgba(16, 185, 129, 0.14);
+    box-shadow: 0 0 30px rgba(16, 185, 129, 0.08);
+}
+
+.hero-image-ring-one {
+    width: 76px;
+    height: 76px;
+    top: 28px;
+    right: 28px;
+    background: radial-gradient(circle, rgba(16, 185, 129, 0.12), transparent 68%);
+}
+
+.hero-image-ring-two {
+    width: 116px;
+    height: 116px;
+    bottom: 22px;
+    left: 18px;
+    background: radial-gradient(circle, rgba(14, 165, 233, 0.1), transparent 70%);
+    opacity: 0.8;
 }
 
 /* Experience Section */
@@ -2753,11 +2855,12 @@ h3 {
         position: fixed;
         top: 72px;
         right: 10px;
-        left: 10px;
-        width: auto;
+        left: auto;
+        width: min(320px, calc(100vw - 20px));
+        max-height: calc(100vh - 92px);
         height: auto;
-        padding: 14px;
-        border-radius: 24px;
+        padding: 12px;
+        border-radius: 22px;
         border: 1px solid var(--header-shell-border);
         background:
             linear-gradient(135deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.02) 100%),
@@ -2793,7 +2896,7 @@ h3 {
         width: 100%;
         flex-direction: column;
         align-items: stretch;
-        gap: 8px;
+        gap: 6px;
         padding: 0;
         background: transparent;
         border: 0;
@@ -2809,14 +2912,14 @@ h3 {
         width: 100%;
         min-width: 0;
         justify-content: flex-start;
-        gap: 12px;
-        min-height: 52px;
-        padding: 8px 10px;
-        font-size: 0.94rem;
+        gap: 10px;
+        min-height: 46px;
+        padding: 7px 9px;
+        font-size: 0.9rem;
         font-weight: 700;
         letter-spacing: 0.02em;
         line-height: 1.2;
-        border-radius: 16px;
+        border-radius: 14px;
         border: 1px solid var(--nav-link-shell-border);
         background:
             linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.025) 100%),
@@ -2837,9 +2940,9 @@ h3 {
         align-items: center;
         justify-content: center;
         flex: 0 0 auto;
-        width: 36px;
-        height: 36px;
-        border-radius: 13px;
+        width: 32px;
+        height: 32px;
+        border-radius: 12px;
         border: 1px solid rgba(16,185,129,0.18);
         background:
             linear-gradient(135deg, rgba(16,185,129,0.16), rgba(14,165,233,0.1)),
@@ -2871,8 +2974,8 @@ h3 {
         align-items: center;
         justify-content: center;
         flex: 0 0 auto;
-        width: 26px;
-        height: 26px;
+        width: 22px;
+        height: 22px;
         color: var(--text-muted);
         font-size: 0.68rem;
         opacity: 0.68;
@@ -3012,21 +3115,23 @@ h3 {
     .nav {
         top: 64px;
         right: 8px;
-        left: 8px;
-        padding: 14px;
-        border-radius: 20px;
+        left: auto;
+        width: min(286px, calc(100vw - 16px));
+        max-height: calc(100vh - 84px);
+        padding: 10px;
+        border-radius: 18px;
     }
 
     .nav-link {
-        min-height: 50px;
-        padding: 7px 9px;
-        font-size: 0.92rem;
+        min-height: 42px;
+        padding: 6px 8px;
+        font-size: 0.88rem;
     }
 
     .nav-link-icon {
-        width: 34px;
-        height: 34px;
-        border-radius: 12px;
+        width: 30px;
+        height: 30px;
+        border-radius: 11px;
     }
 
     body {
