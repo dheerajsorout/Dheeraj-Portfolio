@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import heroProfile from '../../hero-profile.png';
-import InkReveal from './InkReveal';
 import { hoverLift, revealScale, revealUp, sectionStagger, springSoft } from './animations/variants';
 
 const prefersReducedMotion = () =>
@@ -211,13 +210,8 @@ const Hero = () => {
                     variants={imageReveal}
                     style={{ y: yParallax }}
                 >
-                    <span className="hero-image-badge" aria-hidden="true">
-                        <i className="fas fa-sparkles"></i>
-                        <span>Focused builder</span>
-                    </span>
                 <span className="hero-image-ring hero-image-ring-one" aria-hidden="true" />
                 <span className="hero-image-ring hero-image-ring-two" aria-hidden="true" />
-                <InkReveal className="hero-ink-reveal" />
                 <img
                     src={heroProfile}
                     alt="Dheeraj"
